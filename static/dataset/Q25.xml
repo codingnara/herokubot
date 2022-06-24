@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<content>
+	<skill kind="detailed">concurrency</skill>
+	<description>
+		predicting outcome of concurrency (2016 Fall, Midterm 2, Question 7)
+	</description>
+	<question>
+		<p>
+			<line>How many different possible values of NAME are there at the end?</line>
+		</p>
+		<img>
+			<name height="6">25.1.png</name>
+			<name height="3">25.2.png</name>
+			<name height="6">25.3.png</name>
+		</img>
+		<p>
+			<line>Choose one:</line>
+		</p>
+	</question>
+	<answers>
+		<option id="c1">
+			<p>
+				<line>
+					1
+				</line>
+			</p>
+		</option>
+		<option id="c2">
+			<p>
+				<line>
+					2
+				</line>
+			</p>
+		</option>
+		<option id="c3">
+			<p>
+				<line>
+					3
+				</line>
+			</p>
+		</option>
+		<option id="c4" correct="true">
+			<p>
+				<line>
+					4
+				</line>
+			</p>
+		</option>
+		<option id="c5">
+			<p>
+				<line>
+					5
+				</line>
+			</p>
+		</option>
+		<option id="c6">
+			<p>
+				<line>
+					6
+				</line>
+			</p>
+		</option>
+		<option id="c7">
+			<p>
+				<line>
+					7
+				</line>
+			</p>
+		</option>
+		<option id="c8">
+			<p>
+				<line>
+					8
+				</line>
+			</p>
+		</option>
+	</answers>
+	<hint>This "forced non-determinism" yields four different answers. (1) if the left one finished completely (both random numbers 0.1) before the right one started (first random number 0.9): copy would be CALIFORNIA, which is what NAME would be, then the right would join BEARS and it’d be "CALIFORNIA BEARS". (2) If the opposite happened, it would be "CAL BEARSIFORNIA". (3, 4) If neither block can finish completely before the other sets "my copy", then each will grab an independent copy, and set NAME accordingly to "CAL BEARS" or "CALIFORNIA" but the one that finishes last will overwrite the earlier one.</hint>
+</content>

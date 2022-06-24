@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<skill kind="detailed">
+		logic
+	</skill>
+	<description>
+		 움직이는 gif (움짤) 도입 
+	</description>
+	<question>
+		<p>
+	<line> [문제 0번]  :  움직이는 gif 가 아닌 것을 고르세요 </line>
+		</p>
+	</question>
+	<answers>
+		<option id="c1" correct="true"> <p><line> (1) : 그림의 _FONTS_ 사이즈를 조절하는 _BLUE_ height 값으로 </line>
+<line>적당한 _BOLDS_ 크기를 만들 수 있으니 _FONTE_ 그 기능으로 그림크기를 _BOLDE_ 적절히 _FONTE_만드세요 </line> 
+<line> _FONTS_ 그림의 사이즈를 조절하는 _BLUE_ height 값으로 </line>
+<line>적당한 _BOLDS_ 크기를 _FONTE_ 만들 수 있으니 _BOLDE_ 그 기능으로 그림크기를  적절히 _FONTE_ 그 기능으로 이용해서  적절히만드세요 </line> 
+</p>
+			<img>
+	<name height="10">command.png</name>
+			</img>
+		</option>
+
+		<option id="c2" > <p> 
+                           <line> (2) :  움직이는 그림파일로  _FONTS_ 문제와 피드백 영상을  _FONTE_ 만드세요 </line> </p>
+			<txt>
+		            <name height="5">1</name>
+			</txt>
+		</option>
+
+		<option id="c3" ><p>
+			<line> (3) :  _LARR_ this is 5 _LE_ 6 a house _RARR_.   </line>
+<line> A_SUPS_x*x-2*x _SUPE_ _BOLDS_한글로 _BLUE_ 파란색 시작 _FONTE_ 이고 </line><line>강조 _EMPHS_ _RED_ 빨간색 _FONTE_ 이고 _BOLDE_ 기울기 _EMPHE_ 끝이다 </line>
+		</p>
+		</option>
+
+	
+	</answers>
+	<hint> 
+	움직이는 gif ? (고르세요)
+		 </hint>
+</content>

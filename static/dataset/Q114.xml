@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<skill kind="detailed">
+		boolean
+	</skill>
+	<description>
+		거북 변수 (Question 2)
+	</description>
+	<question>
+		<p>
+			<line>다음 왼쪽 명령이 실행되어 그려진 오른쪽 그림을 살펴보자 ! </line>
+		</p>
+		<img>
+			<name height="8">2.11.png</name>
+		</img>
+		<p>
+			<line>초기 상태에서 실행되어, 위의 그림을 그린 후의 변수 n 값은 ? </line>
+		</p>
+	</question>
+	<answers>
+		<option id="c1">
+			<p>
+				<line>
+					8
+				</line>
+			</p>
+		</option>
+		<option id="c2" correct="true">
+			<p>
+				<line>
+					9
+				</line>
+			</p>
+		</option>
+		<option id="c3">
+			<p>
+				<line>
+					10
+				</line>
+			</p>
+		</option>
+		<option id="c4" >
+			<p>
+				<line>
+					1
+				</line>
+			</p>
+		</option>
+		
+	</answers>
+	<hint>n=n+1 은 n의 값을 1 만큼 증가시킨다 </hint>
+</content>

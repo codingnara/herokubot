@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+
+	<skill kind="detailed">  logic   	</skill>
+	<description>     짧은 터틀명령문 만들기 게임   </description>
+	<question>  <p>
+	<line> [문제 66번]  :  다음 그림을 만드는 최대로 짧은 코딩명령문을 만드세요 </line>         
+                      </p>
+	          <img>   	<name height="8">pro66.png</name>           </img>
+	       
+</question>
+<answers>
+		<option id="c1" correct="true">              <p> 
+                           <line>  짧은 명령문을 적어보세요 (문제 제출하면 데이터베이스에 답이 저장됨) </line> 
+                        </p>
+			<txt>     <name height="5">1</name>   	</txt>
+
+                                     <img>    	<name height="10">pro666.png</name>   </img>
+                                     <img>    	<name height="10">pro667.png</name>   </img>
+		</option>	
+</answers>
+
+<hint> 	문제 제출하면 위와 같이 데이터베이스에 빈 문제와 함께 저장됨  </hint>
+
+</content>

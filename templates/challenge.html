@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SNU 인공지능수학 코딩수학</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <script src="{{ url_for('static', filename='jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='analytics.js') }}" type="text/javascript"></script>
+
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='default.css') }}" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="llab-nav navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="nav navbar-nav navbar-left navbar-title"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  SNU코딩수학  &nbsp;  &nbsp; [ 인공지능수학 ] &nbsp;  &nbsp;  &nbsp;  진단처방 학습시스템 </div>
+      <div class="nav navbar-nav navbar-right">
+        <ul class="nav-btns btn-group">
+          <a class="btn btn-default" id="return" href="{{url_for('welcome')}}">되돌아가기</a>
+        </ul>
+      </div>
+    </nav>
+    <div class="title-small-screen"> SNU 인공지능수학 과제평가 | 2021 가을학기 </div>
+    <div style="display:none;">
+        <form action="{{ url_for('challenge_section') }}" method=post id="next_go">
+          <!--input type=hidden name=question_id value=10 id="question_id"/-->
+        </form>
+    </div>
+    <div class="llab-full">
+      <script type="text/javascript">
+       
+
+
+
+	   function submit() {
+          // get the selected answer
+          // console.log("radio button selected", document.querySelector('input[name="radiobutton"]:checked').value)
+		  
+          log_session_correctness = [];
+          log_session_question_id = [];
+		  log_session_id_selected = [];
+          log_session_txt_selected = [];
+
+
+
+         /////////////////여기서 메인 for 루프 ////////////////////////////////////
+
+
+          {% for question_elem in questions_lst %}
+		  
+		  
+          var question_id = parseInt("{{question_elem[0]}}");
+          var hint_div_id = "hint_{{question_elem[0]}}";
+          var correct = 0;
+          var answer_list_length = {{question_elem[3] | length}};
+          var multi_answers = parseInt({{question_elem[6]}});
+          var single_choice = answer_list_length == 1 && multi_answers == 0;
+
+		  var txt_selected = ""; 
+		  var id_selected = "";
+          var checked_list = [];
+                  
+
+	
+		  //alert(  multi_answers )
+		  
+		  // multi_answer=  3   ==> multinanswer
+		  // ans_list_length  ==  option id="c1" correct= true    써있는 것의 갯수
+          ////		  question _ elem[3]  |  length  은 
+	      ///////  22222222 시작  multi_answer=  2 ////////////////////////
+		  /// question, answers, correct_ans_id, hint, description, multi_answers 
+		  //   questions_lst  어펜드 [question_id, question, answers, correct_ans_id, hint, description, multi_answers
+          //  question type 은 1 이면 멀티 , 0 이면 단답형 (안쓰면 0 됨 ) 
+
+
+
+		  
+    if (single_choice) {
+
+
+
+            // not answered, or answered
+            if (document.querySelector('input[name="radiobutton_{{question_elem[0]}}"]:checked') == null) {
+               
+			   //document.getElementById(hint_div_id).innerHTML="You didn't answer this question, here's our hint:<br> {{question_elem[4]}}";
+               alert("{{question_elem[0]}} 문제에 답하세요 !");
+			   return
+		       //alert("문제의 답을 선택하세요");
+			   //return
+
+
+		    } else {   // 클릭 된 경우 다음 시작 ///////  text 쓰는 문장은 /////////////
+              
+			  
+		    //txt_selected = ""; 
+		    //id_selected = "";
+	
+		 
+                   id_selected = document.querySelector('input[name="radiobutton_{{question_elem[0]}}"]:checked').value;
+			       ///////////////////////////     '8_3_c4'  또는   909_0_c1   //////////////////////////////////////////
+              
+			  		
+			
+			       var txtarea = document.getElementById("txt_{{question_elem[0]}}");
+					
+			
+			          if( txtarea != null )  {  // alert("txt_{{question_elem[0]}}")
+			
+			  
+			            txt_selected = document.getElementById("txt_{{question_elem[0]}}").value;
+				        ////////////////////////////////////////////////////////////////////////////
+			  
+			            if( txt_selected == null || txt_selected.trim()=="" )  {
+			                alert("{{question_elem[0]}} 서술형 문제에 답하세요");
+			                return 
+			            }
+				  
+				  
+                      }  else  txt_selected = "";
+			  
+		              ////////////////////////////////////////////////////
+			
+				  
+			          var id_correct = "{{question_elem[0]}}_{{question_elem[3][0]}}";
+			  
+                      var report_div_id = "feedback_{{question_elem[0]}}_" + id_selected;
+                      // console.log(report_div_id)
+			  				  
+			  
+                      // var correct = 0;
+                      if (id_selected == id_correct)
+                      correct = 1;
+                      // console.log(id_selected, id_correct)
+			  
+				  
+                   if (correct) {
+                   // correctly answered
+                   document.getElementById(report_div_id).innerHTML="<font color='green'>맞았습니다 ! </font>";
+                   // show explain
+                   document.getElementById(hint_div_id).innerHTML="설명 ==> {{question_elem[4]}}";
+                   } else {
+                   // wrong
+                   document.getElementById(report_div_id).innerHTML="틀렸습니다 !";
+                   // show hint
+                   document.getElementById(hint_div_id).innerHTML="힌트 ==> {{question_elem[4]}}";
+                   }			  
+			  
+            } // else 클릭이 되어있다면 끝 
+			
+						
+    } else {   // single end , multiple begin /////////
+		  
+		  
+		  		         // not answered, or answered
+            if (document.querySelector('input[name="checkbox_{{question_elem[0]}}"]:checked') == null) {
+               
+			   //document.getElementById(hint_div_id).innerHTML="You didn't answer this question, here's our hint:<br> {{question_elem[4]}}";
+               if(multi_answers<5)   alert("{{question_elem[0]}} 문제에 답하세요 !!");
+			   //return
+		       //alert("문제의 답을 선택하세요");
+			   //return
+
+
+		    } else {   
+		  
+		  
+		        id_selected = document.querySelector('input[name="checkbox_{{question_elem[0]}}"]:checked').value;
+			    ///////////////////////////     '8_3_c4'  또는   909_0_c1   //////////////////////////////////////////
+                //alert( id_selected ) 
+		         // 답이 여러개인 문제 경우 //////////////////////////////
+		  
+                 // multiple choices
+                 // console.log([question_id]);
+                 var answer_list = [];
+                 // correct answer list
+			
+			
+			
+                 {% for item_id in question_elem[3] %}
+                      answer_list.push("{{question_elem[0]}}_{{item_id}}");
+                 {% endfor %}
+				 
+				  
+                  // checked answer list
+                  //checked_list = [];
+			
+			
+			
+                  {% for candidate in question_elem[2] %}
+                    var elem = document.getElementById("{{question_elem[0]}}_{{candidate[0]}}");
+                    if (elem.checked)
+                       checked_list.push(elem.value); // "{{question_elem[0]}}_{{candidate[0]}}"
+                  {% endfor %}
+                   
+				   
+				   //alert( checked_list.length )
+				   if( checked_list.length>0 )  {
+				   
+				      var str = checked_list.pop() 
+				      id_selected  =  id_selected + ":" +  str[str.length-1]
+							
+				   }
+				   //      id_selected  =  Id_selected + ":" + elem.checked   //// checked_list.pop() // [ checked_list.length - 1 ] 
+				   ////////////////////////////
+				   
+                  // then check if all correct answers are checked and only the correct answers are checked
+           
+
+		           if (JSON.stringify(answer_list.sort())==JSON.stringify(checked_list.sort())) {
+                        correct = 1; 
+                    }
+                    // console.log([question_id, answer_list, checked_list])
+			
+			
+                   if (correct) {
+                         // show explain
+                          document.getElementById(hint_div_id).innerHTML="<font color='green'>맞았습니다 !!</font><br>설명 ==> {{question_elem[4]}}";
+                    } else  {
+                            // show hint
+                            document.getElementById(hint_div_id).innerHTML="틀렸습니다 !!<br>힌트 ==> {{question_elem[4]}}";
+                    }
+			
+			}
+			
+    }     // 답이 여러 개인 경우 끝 // 
+		  
+		  
+	//////////////2222  끝 ///////////////////////	  
+		  
+		  
+		  
+		  
+		  
+          // disable all the candidates
+          {% for candidate in question_elem[2] %}
+            document.getElementById("{{question_elem[0]}}_{{candidate[0]}}").disabled=true;
+          {% endfor %}
+		  
+		  
+		  
+		  if( multi_answers<5 )  {
+		  
+          log_session_correctness.push(correct);
+          log_session_question_id.push(question_id);
+		  
+		  
+		  log_session_id_selected.push( id_selected );
+          log_session_txt_selected.push( txt_selected );
+
+          }
+
+
+
+
+	
+          {% endfor %}
+		  
+		  
+		  
+
+		  ////////// 여기서 맨 처음 메인 루프가 끝남 //////////////////////////////////
+		  
+		  
+		  
+		  
+		  
+		  
+		  ///////////////////////////////////////////////////////////////////
+          /*
+          if (!single_choice) {
+            return;
+          }
+          */
+          // write feedback
+          document.getElementById("feedback_bar").innerHTML="<font style='color:blue;font-size:20px;'>Feedback calculating based on your answers<br>Please wait for a few seconds...<br></font>";
+          // disable check answer
+          document.getElementById("check_answer_button").disabled=true;
+          // console.log(session);
+          // write feedback
+          // document.getElementById("feedback_bar").innerHTML="<font size='30px;'>Hello<br>World<br></font>";
+          // disable check answer
+          // document.getElementById("check_answer_button").disabled=true;
+          // enable try again
+          // document.getElementById("try_again_button").disabled=false;
+          //////
+          var session_data = {
+            data: JSON.stringify({
+              "correctness": log_session_correctness,
+              "question_id": log_session_question_id,
+			  "id_selected": log_session_id_selected,  // parseInt( id_selected ),
+			  "txt_selected": log_session_txt_selected 
+			  			  
+            })
+          };
+          $.ajax({
+              url: "/log_session",
+              type: "POST",
+              data: session_data,
+              dataType: 'json',
+              success: function(data) {
+                // console.log("success")
+                // console.log(data[0]["Math Basis"])
+                // console.log(Object.keys(data[0]))
+                var topics_data = data[0];
+                var session_data = data[1];
+                var topic_names = Object.keys(topics_data);
+                var topic_names_session = Object.keys(session_data)
+                var report_msg = "";
+                report_msg += "<font style='color:blue;font-size:18px;'>Thank you for your patience, here are some of our suggestions:<br></font>"
+                report_msg += "<font style='color:gray;font-size:20px;'>Suggestions according to your history records:</font><br>";
+                for(var i = 0; i < topic_names.length; i++) {
+                  // console.log(topics_data[topic_names[i]])
+                  var tmp_topic = topic_names[i];
+                  var tmp_value = topics_data[tmp_topic];
+                  if (tmp_value > 0.8) {
+                    // report_msg += "<font size='20px;' color='green'>Your mastery level of " + tmp_topic + " is very high!</font><br>";
+                    report_msg += "<font style='color:green;font-size:24px;'>Your mastery level of " + tmp_topic + " is very high!</font><br>";
+                  } else if (tmp_value > 0.6) {
+                    report_msg += "<font style='color:blue;font-size:24px;'>Your mastery level of " + tmp_topic + " is above average.</font><br>"; // so-called average = 0.5
+                  } else if (tmp_value > 0.4) {
+                    report_msg += "<font style='color:black;font-size:24px;'>You can definitely do better on " + tmp_topic + "~</font><br>";
+                  } else if (tmp_value > 0) {
+                    report_msg += "<font style='color:orange;font-size:24px;'>You might need more practice on " + tmp_topic + "~</font><br>";
+                  } else {
+                    report_msg += "<font style='color:gray;font-size:24px;'>We need more data on " + tmp_topic + " to estimate your performance.</font><br>";
+                  }
+                }
+                report_msg += "<font style='color:gray;font-size:20px;'>Suggestions according to your recent records:</font><br>";
+                for(var i = 0; i < topic_names_session.length; i++) {
+                  // console.log(topics_data[topic_names[i]])
+                  var tmp_topic = topic_names_session[i];
+                  var tmp_value = session_data[tmp_topic];
+                  if (tmp_value > 0.6) {
+                    // report_msg += "<font size='20px;' color='green'>Your mastery level of " + tmp_topic + " is very high!</font><br>";
+                    report_msg += "<font style='color:green;font-size:24px;'>Your mastery level of " + tmp_topic + " is very high!</font><br>";
+                  } else if (tmp_value > 0.45) {
+                    report_msg += "<font style='color:blue;font-size:24px;'>Your mastery level of " + tmp_topic + " is above average.</font><br>"; // so-called average = 0.5
+                  } else if (tmp_value > 0.2) {
+                    report_msg += "<font style='color:black;font-size:24px;'>You can definitely do better on " + tmp_topic + "~</font><br>";
+                  } else if (tmp_value > 0) {
+                    report_msg += "<font style='color:orange;font-size:24px;'>You might need more practice on " + tmp_topic + "~</font><br>";
+                  } else {
+                    report_msg += "<font style='color:gray;font-size:24px;'>We need more data on " + tmp_topic + " to estimate your performance.</font><br>";
+                  }
+                }
+                // write feedback
+                // document.getElementById("feedback_bar").innerHTML="<font size='20px;'>Hello<br>World<br></font>";
+                document.getElementById("feedback_bar").innerHTML=report_msg;
+                // enable try again
+                document.getElementById("try_again_button").disabled=false;
+              },
+              error: function(xhr, type) {
+                console.log("logging error", xhr, type)
+              }
+          });
+        }
+		
+        function next_go(){
+          var form = document.getElementById("next_go");
+          // form.question_id.value = question_id;
+          form.submit();
+        }
+		
+		
+      </script>
+	  
+	  
+      {% for question_elem in questions_lst %}
+	  
+	  
+      <div class="panel panel-primary MultipleChoice Question">
+        <div class="panel-heading questionType">Question {{question_elem[0]}} &nbsp;&nbsp; <small>{{question_elem[5]}}</small></div>
+        <div class="panel-body currentQuestionBox">
+          <div class="leftColumn">
+            <div class="promptDiv">
+              {% for sentence in question_elem[1] %}
+                {% if sentence[0] == 'p' %}
+                  <p>
+                  {% for line in sentence[1] %}
+                    {% if line == '<code>' %}
+                      <code>
+                    {% elif line == '</code>' %}
+                      </code>
+                    {% elif line == '<sup>' %}
+                      <sup>
+                    {% elif line == '</sup>' %}
+                      </sup>
+                    {% elif line == '<sub>' %}
+                      <sub>
+                    {% elif line == '</sub>' %}
+                      </sub>
+
+					{% elif line == '<fonts>' %}
+                      <font size=+1>					  
+
+
+					{% elif line == '<red>' %}
+                      <font color=red>					  
+					{% elif line == '<blue>' %}
+                      <font color=blue>
+                    {% elif line == '</font>' %}
+                      </font>
+					  
+                    {% elif line == '<em>' %}
+                      <em>
+                    {% elif line == '</em>' %}
+                      </em>
+                    {% elif line == '<b>' %}
+                      <b>
+                    {% elif line == '</b>' %}
+                      </b>
+                    {% elif line == '<br>' %}
+                      <br>
+                    {% elif line == '&larr;' %}
+                      &larr;
+                    {% elif line == '&rarr;' %}
+                      &rarr;
+                    {% elif line == '&lt;' %}
+                      &lt;
+                    {% elif line == '&gt;' %}
+                      &gt;
+					{% elif line == '&and;' %}
+                      &amp;&amp;
+                    {% elif line == '&le;' %}
+                      &lt;=
+                    {% elif line == '&ge;' %}
+                      &gt;=
+                    {% elif line == '&nbsp;' %}
+                      &nbsp;
+                    {% elif line == '&emsp;' %}
+                      &emsp;
+                    {% else %}
+                      {{line}}
+                    {% endif %}
+                  {% endfor %}
+                  </p>
+                {% elif sentence[0] == 'img' %}
+                  <p>
+                  {% for line in sentence[1] %}
+                    {% if line[1] != -1 %}
+                    <img src="{{ url_for('static', filename='img/')}}{{line[0]}}" alt="" height="{{line[1]}}px;">&nbsp;
+                    {% else %}
+                    <img src="{{ url_for('static', filename='img/')}}{{line[0]}}" alt="">&nbsp;
+                    {% endif %}
+                  {% endfor %}
+                  </p>
+                {% endif %}
+              {% endfor %}
+
+            </div>
+			
+			
+            <div class="radiobuttondiv">
+           
+		   <hr> 
+		   
+		   
+		   
+              {% for candidate in question_elem[2] %}
+               
+
+			   <table>
+                  <tbody>
+				  
+				  
+                    <tr class="table-middle">
+					
+					
+					
+					
+					
+                      <td class="table-middle">
+                        <!--input type="radio" name="radiobutton_{{question_elem[0]}}" id="{{question_elem[0]}}_{{candidate[0]}}" value="{{question_elem[0]}}_{{candidate[0]}}" class="radio"-->
+                        {% if question_elem[6] == 0 and question_elem[3] | length == 1 %}
+                        <input type="radio" name="radiobutton_{{question_elem[0]}}" id="{{question_elem[0]}}_{{candidate[0]}}" value="{{question_elem[0]}}_{{candidate[0]}}" class="radio">
+                        {% else %}
+                        <input type="checkbox" name="checkbox_{{question_elem[0]}}" id="{{question_elem[0]}}_{{candidate[0]}}" value="{{question_elem[0]}}_{{candidate[0]}}" class="radio">
+                        {% endif %}
+                      </td>
+					  
+                      <td class="table-middle">
+                        <div id="choicetext:{{question_elem[0]}}_{{candidate[0]}}">
+                          <!--{{candidate[1]}}-->
+                          {% for sentence in candidate[1] %}
+                            {% if sentence[0] == 'p' %}
+							
+                      
+							  
+                              {% for line in sentence[1] %}
+                                {% if line == '<code>' %}
+                                  <code>
+                                {% elif line == '</code>' %}
+                                  </code>
+                                {% elif line == '<sup>' %}
+                                  <sup>
+                                {% elif line == '</sup>' %}
+                                  </sup>
+                                {% elif line == '<sub>' %}
+                                  <sub>
+                                {% elif line == '</sub>' %}
+                                  </sub>
+
+
+					{% elif line == '<fonts>' %}
+                      <font size=+1>					  
+
+					{% elif line == '<red>' %}
+                      <font color=red>					  
+					{% elif line == '<blue>' %}
+                      <font color=blue>
+                    {% elif line == '</font>' %}
+                      </font>
+								  
+                                {% elif line == '<em>' %}
+                                  <em>
+                                {% elif line == '</em>' %}
+                                  </em>
+                                {% elif line == '<b>' %}
+                                  <b>
+                                {% elif line == '</b>' %}
+                                  </b>
+                                {% elif line == '<br>' %}
+                                  <br>
+					  
+                                {% elif line == '&larr;' %}
+                                  &larr;
+                                {% elif line == '&rarr;' %}
+                                  &rarr;
+                                {% elif line == '&lt;' %}
+                                  &lt;
+                                {% elif line == '&gt;' %}
+                                  &gt;
+					{% elif line == '&and;' %}
+                      &amp;&amp;
+                    {% elif line == '&le;' %}
+                      &lt;=
+                    {% elif line == '&ge;' %}
+                      &gt;=
+                                {% elif line == '&nbsp;' %}
+                                  &nbsp;
+                                {% elif line == '&emsp;' %}
+                                  &emsp;
+                                {% else %}
+                                  {{line}}
+                                {% endif %}
+                              {% endfor %}
+                              
+						
+						
+						
+						
+						
+							  
+							  
+                            {% elif sentence[0] == 'img' %}							
+                              <p style="margin-top:0;margin-bottom:0;">
+                              {% for line in sentence[1] %}
+                                {% if line[1] != -1 %}
+                                <img src="{{ url_for('static', filename='img/')}}{{line[0]}}" alt="" height="{{line[1]}}px;">&nbsp;
+                                {% else %}
+                                <img src="{{ url_for('static', filename='img/')}}{{line[0]}}" alt="">&nbsp;
+                                {% endif %}
+                              {% endfor %}
+                          
+							  
+							  
+							  
+						    {% elif sentence[0] == 'txt' %}
+                             <p style="margin-top:0;margin-bottom:0;">
+                              {% for line in sentence[1] %}
+                                {% if line[1] != -1 %}
+                                <textarea  id="txt_{{question_elem[0]}}" cols="60"  rows="6"></textarea>&nbsp;
+                                {% else %}
+                                <textarea id="txt_{{question_elem[0]}}" rows="6" cols="60"></textarea>&nbsp;
+                                {% endif %}
+                              {% endfor %}
+                           
+							  
+							  
+							  
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </td>
+					  
+					  
+					  
+                      <td class="table-middle">
+                      <div id="feedback_{{question_elem[0]}}_{{question_elem[0]}}_{{candidate[0]}}" name="feedbacks"></div>
+                      </td>
+					  
+					  
+					  
+					  
+					  
+                    </tr>
+					
+					
+                  </tbody>
+                </table>
+                <hr>
+              {% endfor %}
+            </div>
+            <div class="resultMessageDiv" id="hint_{{question_elem[0]}}" align="center">
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="feedbackdiv" align="center" id="feedback_bar">
+      </div>
+      <table class="buttonTable">
+        <tbody>
+          <tr>
+            <td>
+              <div class="buttonDiv">
+                <button class="btn btn-primary" onclick="submit()" id="check_answer_button">문제풀이 제출하기</button>
+              </div>
+            </td>
+<!--			
+            <td>
+              <div class="buttonDiv">
+                <button class="btn btn-primary" onclick="next_go()" id="try_again_button" disabled>Next Challenge</button>
+              </div>
+            </td>
+-->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+
+</html>

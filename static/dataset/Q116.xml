@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<skill kind="detailed">
+		logic
+	</skill>
+	<description>
+		움직이는 gif (움짤) 도입 
+	</description>
+	<question>
+		<p>
+	<line>움직이는 gif ? (고르세요)</line>
+		</p>
+	</question>
+	<answers>
+		<option id="c1" correct="true">
+			<img>
+	<name height="4">snow.gif</name>
+			</img>
+		</option>
+		<option id="c2" >
+			<img>
+		<name height="4">1.11.png</name>
+			</img>
+		</option>
+	
+	</answers>
+	<hint> 움직이는 그림파일 !</hint>
+</content>

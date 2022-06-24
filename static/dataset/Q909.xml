@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<skill kind="detailed">
+		logic
+	</skill>
+	<description>
+		움직이는 gif (움짤) 도입 
+	</description>
+
+	<question>
+		<p>
+	<line> [문제 9번] : 다음의 움직이는 gif 그림이 작동하는 원리를 적으세요. </line>
+		</p>
+
+
+			<img>
+	                        <name height="4">snow.gif</name>
+			</img>
+
+	</question>
+	<answers>
+
+
+
+
+		<option id="c1" correct="true">
+
+		<p>
+	<line> 이유를 적으세요  (마지막에 왼쪽 라디오 단추 클릭)</line>
+		</p>
+
+			<txt>
+		            <name height="5">1</name>
+			</txt>
+
+		</option>
+
+	</answers>
+	<hint> 움직이는 그림파일 원리를 찾아보세요 </hint>
+</content>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<skill kind="detailed">
+		logic
+	</skill>
+	<description>
+		 움직이는 gif (움짤) 도입 
+	</description>
+	<question>
+		<p>
+	<line> [문제 1번]  :  다음 그림이  움직이는 gif 가 아닌 이유를 적으세요 </line>         
+                      </p>
+	          <img>
+	<name height="10">command1.png</name>
+	         </img>
+	          <img>
+	<name height="10">command2.png</name>
+	         </img>
+
+
+</question>
+
+
+<answers>
+		<option id="c1" correct="true"> 
+                          <p> 
+                           <line>  이유를 적으세요 (마지막 제출하기 전에 왼쪽 라디오 단추를 클릭) </line> 
+ <line>  [option id="c1" correct="true"]  [txt]   [name height="5"] 1 [/name]  [/txt]  [/option]  </line>
+                        </p>
+			<txt>
+		            <name height="5">1</name>
+			</txt>
+		</option>	
+</answers>
+
+
+<hint> 	움직이는 gif ? (원리를 찾아보세요)  </hint>
+</content>

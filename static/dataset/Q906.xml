@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<skill kind="detailed">logic</skill>
+	<description>
+		Predicting the outcome of code. (2016 Fall, Final, Question 12 b)
+	</description>
+	<question multi_answer="1">
+		<p>
+			<line>We tried to rewrite our midterm maze script to visit all the letters A-H in the maze. Here are our four attempts, let us know the letters they each visit.</line>
+		</p>
+		
+		<p>
+			<line>  집합 { 정(1,2,3,4) _AND_  z _GE_ 10 }  </line>
+			<line>  집합 { 정(1,2,3,4) || z== 0 } </line>
+			<line>  if( x _LE_ 10  _AND_  y _LT_ 20 ) return 10 </line>
+		</p>
+		<img>
+			<name height="7">906.png</name>
+		</img>
+	</question>
+	<answers>
+		<option id="c1" correct="true">
+			<p>
+				<line>A</line>
+			</p>
+		</option>
+		<option id="c2" correct="true">
+			<p>
+				<line>B</line>
+			</p>
+		</option>
+		<option id="c3" correct="true">
+			<p>
+				<line>C</line>
+			</p>
+		</option>
+		<option id="c4" correct="true">
+			<p>
+				<line>D</line>
+			</p>
+		</option>
+		<option id="c5" correct="true">
+			<p>
+				<line>E</line>
+			</p>
+		</option>
+		<option id="c6" correct="true">
+			<p>
+				<line>F</line>
+			</p>
+		</option>
+		<option id="c7">
+			<p>
+				<line>G</line>
+			</p>
+		</option>
+		<option id="c8" correct="true">
+			<p>
+				<line>H</line>
+			</p>
+		</option>
+	</answers>
+	<hint>Walks around the "left wall" of the maze.</hint>
+</content>

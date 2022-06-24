@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<content>
+	<skill kind="detailed">concurrency</skill>
+	<description>
+		Predicting the possible outcomes of program (2017 Spring, Final, Question 8)
+	</description>
+	<question>
+		<p>
+			<line>_BOLDS_reverse_BOLDE_ reverses the order of the digits, and _BOLDS_right_BOLDE_ rotates the digits to the right (the one furthest on the right moves over to the left). How many different, unique values of NUMBER are there at the end? (select all that apply) Note: _EMPHS__BOLDS_"set"_BOLDE__EMPHE_ blocks run instantaneously and "atomically" (i.e., aren't interrupted by any other script)</line>
+		</p>
+		<img>
+			<name height="1">82.1.png</name>
+			<name height="1">82.2.png</name>
+		</img>
+		<img>
+			<name height="3">82.3.png</name>
+		</img>
+		<img>
+			<name height="3">82.4.png</name>
+			<name height="3">82.5.png</name>
+			<name height="3">82.6.png</name>
+		</img>
+	</question>
+	<answers>
+		<option id="c1">
+			<p>
+				<line>123</line>
+			</p>
+		</option>
+		<option id="c2">
+			<p>
+				<line>124</line>
+			</p>
+		</option>
+		<option id="c3">
+			<p>
+				<line>125</line>
+			</p>
+		</option>
+		<option id="c4">
+			<p>
+				<line>132</line>
+			</p>
+		</option>
+		<option id="c5" correct="true">
+			<p>
+				<line>133</line>
+			</p>
+		</option>
+		<option id="c6" correct="true">
+			<p>
+				<line>142</line>
+			</p>
+		</option>
+		<option id="c7">
+			<p>
+				<line>213</line>
+			</p>
+		</option>
+		<option id="c8" correct="true">
+			<p>
+				<line>214</line>
+			</p>
+		</option>
+		<option id="c9">
+			<p>
+				<line>231</line>
+			</p>
+		</option>
+		<option id="c10" correct="true">
+			<p>
+				<line>232</line>
+			</p>
+		</option>
+		<option id="c11">
+			<p>
+				<line>312</line>
+			</p>
+		</option>
+		<option id="c12" correct="true">
+			<p>
+				<line>313</line>
+			</p>
+		</option>
+		<option id="c13">
+			<p>
+				<line>321</line>
+			</p>
+		</option>
+		<option id="c14">
+			<p>
+				<line>322</line>
+			</p>
+		</option>
+		<option id="c15">
+			<p>
+				<line>412</line>
+			</p>
+		</option>
+		<option id="c16">
+			<p>
+				<line>421</line>
+			</p>
+		</option>
+		<option id="c17">
+			<p>
+				<line>423</line>
+			</p>
+		</option>
+		<option id="c18">
+			<p>
+				<line>424</line>
+			</p>
+		</option>
+		<option id="c19">
+			<p>
+				<line>431</line>
+			</p>
+		</option>
+		<option id="c20">
+			<p>
+				<line>432</line>
+			</p>
+		</option>
+		<option id="c21">
+			<p>
+				<line>433</line>
+			</p>
+		</option>
+
+	</answers>
+	<hint>Consider the 3 * 2 * 1 = 6 possibilities of different order of +, V and R. (some of the orders might have the same outcome)</hint>
+</content>

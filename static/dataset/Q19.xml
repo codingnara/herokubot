@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<skill kind="detailed">logic</skill>
+	<description>	빈 문제	</description>
+	<question multi_answer="5">    빈 문제	</question>
+	<answers> 빈 문제	 </answers>
+	<hint> 빈 문제	</hint>
+</content>

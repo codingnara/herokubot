@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<skill kind="detailed">
+		boolean
+	</skill>
+	<description>
+		거북 행동문자와 도돌이표 (Question 1)
+	</description>
+	<question>
+		<p>
+			<line>아래 맨 오른쪽 그림을 그리는 거북명령을 생각해보자 !</line>
+		</p>
+		<img>
+			<name height="5">1.11.png</name>
+		</img>
+		<p>
+			<line>초기 상태에서, 그 그림을 그리지 못하는 명령을 하나 고르세요:</line>
+		</p>
+	</question>
+	<answers>
+		<option id="c1">
+			<p>
+				<line>
+					doit( suds ) 
+				</line>
+			</p>
+		</option>
+		<option id="c2">
+			<p>
+				<line>
+					doit( s[u]s )
+				</line>
+			</p>
+		</option>
+		<option id="c3">
+			<p>
+				<line>
+					doit( ssLLsu )
+				</line>
+			</p>
+		</option>
+		<option id="c4" correct="true">
+			<p>
+				<line>
+					doit( ssttu )
+				</line>
+			</p>
+		</option>
+		
+	</answers>
+	<hint>t 는 현재 위치와 방향에서 뒷것음질 하는 행동문자입니다 </hint>
+</content>

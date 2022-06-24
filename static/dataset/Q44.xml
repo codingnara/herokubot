@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<content>
+	<skill kind="detailed">complexity</skill>
+	<description>
+		algorithm complexity. (2017 Spring, Quest, Question 6)
+	</description>
+	<question>
+		<p>
+			<line>Given a list (of size N) of ID numbers well in advance, and _BOLDS_infinite storage_BOLDE_, what’s the running time of an algorithm to find whether two different IDs are in the list?</line>
+			<line>Select one.</line>
+		</p>
+	</question>
+	<answers>
+		<option id="c1" correct="true">
+			<p>
+				<line>
+					Constant
+				</line>
+			</p>
+		</option>
+		<option id="c2">
+			<p>
+				<line>
+					Logarithmic
+				</line>
+			</p>
+		</option>
+		<option id="c3">
+			<p>
+				<line>
+					Linear
+				</line>
+			</p>
+		</option>
+		<option id="c4">
+			<p>
+				<line>
+					Quadratic
+				</line>
+			</p>
+		</option>
+		<option id="c5">
+			<p>
+				<line>
+					Exponential
+				</line>
+			</p>
+		</option>
+	</answers>
+	<hint>the hash-table-like idea (e.g. using index of a list to refer to the ID)</hint>
+</content>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<skill kind="detailed">calculation</skill>
+	<description>
+		Binary number expression. (2016 Fall, Final, Question 10)
+	</description>
+	<question  multi_answer="1">
+		<p>
+			<line>YouTube now uses 64 instead of 32 bits to count views. How many more is that?</line>
+			<line>select ONE.</line>
+		</p>
+	</question>
+	<answers>
+		<option id="c1" correct="true">
+			<p>
+				<line>2x  여기 답이예요            ;    _SPACE_ 이것 누르세요    ;   여기 답이예요</line>
+
+                                                  <line> no more 3  줄 </line>
+
+			</p>
+		</option>
+		<option id="c2" ><p>
+				<line>2x  ;    _SPACE_ 이것 누르세요   </line>
+
+                                                  <line> no more 3  줄 </line></p>
+
+		</option>
+		<option id="c3"><p>
+				<line>3x  ;    _SPACE_ 이것 누르세요   </line>
+
+                                                  <line> no more 3  줄 </line></p>
+
+		</option>
+		<option id="c4"><p>
+				<line>4x  ;    _SPACE_ 이것 누르세요   </line>
+
+                                                  <line> no more 3  줄 </line>
+                                        </p>
+		</option>
+		<option id="c5" correct="true">
+			<p>
+				<line>5x  ;    _SPACE_ 이것 누르세요   </line>
+
+                                                  <line> no more 3  줄 </line>
+
+			</p>
+		</option>
+	</answers>
+	<hint>pow(2, 64) / pow(2, 32) = ?</hint>
+</content>
